@@ -21,7 +21,7 @@ const initialState: CurrencyState = {
   targetCurrency: "AFN"
 };
 const urlApi =
-  "https://api.exchangeratesapi.io/v1/symbols?access_key=3479c11d574a31bbec3eb7767ecc2ecd";
+  "http://api.exchangeratesapi.io/v1/symbols?access_key=3479c11d574a31bbec3eb7767ecc2ecd";
 export const fetchCurrencyExchangeSymbols = createAsyncThunk(
   "currencyExchangeOption/fetchCurrencyExchangeOption",
   async () => {
@@ -35,7 +35,7 @@ export const fetchCurrencyExchangeSymbols = createAsyncThunk(
 );
 
 const urlApiExChange =
-  "https://api.exchangeratesapi.io/v1/latest?access_key=3479c11d574a31bbec3eb7767ecc2ecd";
+  "http://api.exchangeratesapi.io/v1/latest?access_key=3479c11d574a31bbec3eb7767ecc2ecd";
 export const fetchCurrencyExchange = createAsyncThunk(
   "currencyExchange/fetchCurrencyExchange",
   async () => {
