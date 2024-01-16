@@ -21,13 +21,15 @@ const initialState: CurrencyState = {
   targetCurrency: "AFN"
 };
 const urlApi =
-  "https:/route-handler-bootcamp.vercel.app/api/http:/api.exchangeratesapi.io/v1/symbols?access_key=3479c11d574a31bbec3eb7767ecc2ecd"
+"https:/route-handler-bootcamp.vercel.app/api/http:/api.exchangeratesapi.io/v1/symbols?access_key=3479c11d574a31bbec3eb7767ecc2ecd"
 // "http://api.exchangeratesapi.io/v1/symbols?access_key=3479c11d574a31bbec3eb7767ecc2ecd";
 export const fetchCurrencyExchangeSymbols = createAsyncThunk(
   "currencyExchangeOption/fetchCurrencyExchangeOption",
   async () => {
     try {
+
       const response = await axios.get(urlApi);
+      console.log("response.data.symbols",response.data.symbols)
       return response.data.symbols;
     } catch (error) {
       throw error;
@@ -44,6 +46,7 @@ export const fetchCurrencyExchange = createAsyncThunk(
   async () => {
     try {
       const response = await axios.get(urlApiExChange);
+      console.log("response.data",response.data)
       return response.data;
     } catch (error) {
       throw error;
