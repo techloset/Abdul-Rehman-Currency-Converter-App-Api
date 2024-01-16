@@ -58,7 +58,7 @@ export default function Home() {
                       id="currency"
                       name="currency"
                       className=" focus:outline-none  rounded-sm w-24  border-x-2 bg-transparent py-0 pl-2 pr-7 text-gray-500   sm:text-sm">
-                      {Object.entries(countrySymbols).map(
+                      {Object.entries(countrySymbols ?? {}).map(
                         ([currencyCode, currencyname]) => {
                           if (currencyCode !== targetCurrency) {
                             return (
