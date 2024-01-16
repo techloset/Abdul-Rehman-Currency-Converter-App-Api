@@ -60,7 +60,7 @@ export default function Converter() {
                                         id="currency"
                                         name="currency"
                                         className="h-full focus:outline-none  rounded-sm w-24  border-x-2 bg-transparent py-0 pl-2 pr-7 text-gray-500   sm:text-sm">
-                                        {Object.entries(countrySymbols).map(
+                                        {Object.entries(countrySymbols ?? {}).map(
                                             ([currencyCode, currencyname]) => {
                                                 if (currencyCode !== targetCurrency) {
                                                     return (
@@ -106,7 +106,7 @@ export default function Converter() {
                                         }}
                                         className="h-full rounded-sm focus:outline-none w-24 border-x-2 bg-transparent py-0 pl-2 pr-7 text-gray-500 sm:text-sm"
                                     >
-                                        {Object.entries(countrySymbols).map(
+                                        {Object.entries(countrySymbols ?? {}).map(
                                             ([currencyCode, currencyname]) => {
                                                 if (currencyCode !== sourceCurrency) {
                                                     return (
