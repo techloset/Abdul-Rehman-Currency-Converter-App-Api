@@ -21,7 +21,7 @@ const initialState: CurrencyState = {
   targetCurrency: "AFN"
 };
 const urlApi =
-  "https://route-handler-bootcamp.vercel.app/api/http://api.exchangeratesapi.io/v1/symbols?access_key=3479c11d574a31bbec3eb7767ecc2ecd"
+  "https:/route-handler-bootcamp.vercel.app/api/http:/api.exchangeratesapi.io/v1/symbols?access_key=3479c11d574a31bbec3eb7767ecc2ecd"
 // "http://api.exchangeratesapi.io/v1/symbols?access_key=3479c11d574a31bbec3eb7767ecc2ecd";
 export const fetchCurrencyExchangeSymbols = createAsyncThunk(
   "currencyExchangeOption/fetchCurrencyExchangeOption",
@@ -36,7 +36,7 @@ export const fetchCurrencyExchangeSymbols = createAsyncThunk(
 );
 
 const urlApiExChange =
-  "https://route-handler-bootcamp.vercel.app/api/http://api.exchangeratesapi.io/v1/latest?access_key=3479c11d574a31bbec3eb7767ecc2ecd"
+  "https:/route-handler-bootcamp.vercel.app/api/http:/api.exchangeratesapi.io/v1/latest?access_key=3479c11d574a31bbec3eb7767ecc2ecd"
 
 // "http://api.exchangeratesapi.io/v1/latest?access_key=3479c11d574a31bbec3eb7767ecc2ecd";
 export const fetchCurrencyExchange = createAsyncThunk(
