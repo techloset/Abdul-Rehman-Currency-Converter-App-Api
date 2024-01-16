@@ -21,7 +21,8 @@ const initialState: CurrencyState = {
   targetCurrency: "AFN"
 };
 const urlApi =
-  "http://api.exchangeratesapi.io/v1/symbols?access_key=3479c11d574a31bbec3eb7767ecc2ecd";
+  "https://route-handler-bootcamp.vercel.app/api/http://api.exchangeratesapi.io/v1/symbols?access_key=3479c11d574a31bbec3eb7767ecc2ecd"
+// "http://api.exchangeratesapi.io/v1/symbols?access_key=3479c11d574a31bbec3eb7767ecc2ecd";
 export const fetchCurrencyExchangeSymbols = createAsyncThunk(
   "currencyExchangeOption/fetchCurrencyExchangeOption",
   async () => {
@@ -35,7 +36,9 @@ export const fetchCurrencyExchangeSymbols = createAsyncThunk(
 );
 
 const urlApiExChange =
-  "http://api.exchangeratesapi.io/v1/latest?access_key=3479c11d574a31bbec3eb7767ecc2ecd";
+  "https://route-handler-bootcamp.vercel.app/api/http://api.exchangeratesapi.io/v1/latest?access_key=3479c11d574a31bbec3eb7767ecc2ecd"
+
+// "http://api.exchangeratesapi.io/v1/latest?access_key=3479c11d574a31bbec3eb7767ecc2ecd";
 export const fetchCurrencyExchange = createAsyncThunk(
   "currencyExchange/fetchCurrencyExchange",
   async () => {
@@ -88,6 +91,6 @@ export const ConverterReducer = createSlice({
 
 export const { updateSourceCurrency, updateTargetCurrency } =
 
-ConverterReducer.actions;
+  ConverterReducer.actions;
 
 export default ConverterReducer.reducer;
