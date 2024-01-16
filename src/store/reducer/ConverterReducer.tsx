@@ -28,7 +28,6 @@ export const fetchCurrencyExchangeSymbols = createAsyncThunk(
     try {
 
       const response = await axios.get(urlApi);
-      console.log("response.data.symbols",response.data.symbols)
       return response.data.symbols;
     } catch (error) {
       throw error;
@@ -44,7 +43,6 @@ export const fetchCurrencyExchange = createAsyncThunk(
   async () => {
     try {
       const response = await axios.get(urlApiExChange);
-      console.log("response.data",response.data)
       return response.data;
     } catch (error) {
       throw error;
