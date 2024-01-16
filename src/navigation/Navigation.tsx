@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
-import Home from "../page/frontend/home/Home"
-import ConrencyConvertList from '../page/frontend/conrencyConvertList/ConrencyConvertList'
-import Converter from '../page/frontend/converter/Converter'
+import Home from "../page/Frontend/home/Home"
+import ConrencyConvertList from '../page/Frontend/conrencyConvertList/ConrencyConvertList'
+import Converter from '../page/Frontend/converter/Converter'
 
 export default function Navigation() {
     return (
