@@ -7,13 +7,17 @@ import {
   updateSourceCurrency,
   updateTargetCurrency,
 } from "../../../store/reducer/ConverterReducer";
+import { useState } from "react";
 
 export default function ConrencyConvertList() {
-  const [currenyTo] = UseConrrencyConvertList();
+  const [currenyTo, setCurrenyTo] = UseConrrencyConvertList();
+  const [selectedCurrency, setSelectedCurrency] = useState("");
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const list = ["USD", "EUR", "JOD", "OMR", "PKR", "INR", "AFN", "AED", "AUD", "QAR", "VND", "CAD", "BGP",];
+
+
+  const list = ["USD", "EUR", "JOD", "OMR", "PKR", "INR", "AFN", "AED", "AUD", "QAR", "VND", "CAD",];
   return (
     <>
       <div className="bg-sky-200 py-12">
@@ -83,42 +87,33 @@ export default function ConrencyConvertList() {
       <div>
         <div className="text-center mt-3 sm:hidden ">
           <div className=" text-center mt-3">
-            <select className=" text-center w-4/12  p-1 border-2 text-gray-400">
+            <select
+              value={selectedCurrency}
+              onChange={(e) => setSelectedCurrency(e.target.value)}
+              className="text-center w-4/12 p-1 border-2 text-gray-400"
+            >
               {list?.map((item, i) => {
                 if (currenyTo !== item) {
-
                   return (
-                    <option key={i}
-                      value={i}
-                      className="flex justify-center text-center  items-center  p-4 font-bold   mx-5 my-4 cursor-pointer"
-                      style={{ backgroundColor: "#f6f6f6" }}
-                      onClick={() => {
-                        dispatch(updateSourceCurrency(currenyTo as string));
-                        dispatch(updateTargetCurrency(item));
-                        navigate(`/convert?from=${currenyTo}&to=${item}`);
-                      }}
-                    >
-                      {typeof currenyTo === "string" ? currenyTo : null}
-                      &nbsp;
-                      &nbsp;
-                      {"To"}
-                      &nbsp;
-                      &nbsp;
-                      {item}
+                    <option key={i} value={item}>
+                      {typeof currenyTo === "string" ? currenyTo : null}&nbsp;&nbsp;{"To"}&nbsp;&nbsp;{item}
                     </option>
                   );
                 }
               })}
-
-
-
             </select>
           </div>
-          <Link to="/list">
-            <button className="border-2 mt-3 rounded-md border-red-500 mx-4 px-8 py-1 bg-red-500 text-white font-bold hover:bg-white hover:text-red-500">
-              Get Started
-            </button>
-          </Link>
+
+          <button
+            className="border-2 mt-3 rounded-md border-red-500 mx-4 px-8 py-1 bg-red-500 text-white font-bold hover:bg-white hover:text-red-500"
+            onClick={() => {
+              dispatch(updateSourceCurrency(currenyTo as string));
+              dispatch(updateTargetCurrency(selectedCurrency));
+              navigate(`/convert?from=${currenyTo}&to=${selectedCurrency}`);
+            }}
+          >
+            Get Started
+          </button>
         </div>
       </div>
     </>

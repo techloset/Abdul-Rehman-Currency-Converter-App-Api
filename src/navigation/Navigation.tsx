@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
-import Hero from "../page/Frontend/home/Home"
-import ConrencyConvertList from '../page/Frontend/conrencyConvertList/ConrencyConvertList'
-import Converter from '../page/Frontend/converter/Converter'
+import Home from "../page/frontend/home/Home"
+import ConrencyConvertList from '../page/frontend/conrencyConvertList/ConrencyConvertList'
+import Converter from '../page/frontend/converter/Converter'
 
 export default function Navigation() {
     return (
@@ -9,7 +9,7 @@ export default function Navigation() {
 
             <Routes>
 
-                <Route path='/' element={<Hero />} />
+                <Route path='/' element={<Home />} />
                 <Route path='/list' element={<ConrencyConvertList  />} />
                 <Route path='/convert' element={<Converter  />} />
 

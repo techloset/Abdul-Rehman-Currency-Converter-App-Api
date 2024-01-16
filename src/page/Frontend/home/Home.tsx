@@ -75,7 +75,7 @@ export default function Home() {
                 </div>
 
                 <span className="flex items-center mx-3">
-                  <img src={logo} />
+                  <img src={logo}  alt="logo"/>
                 </span>
 
                 <div className="relative mt-2 rounded-sm shadow-sm ">
