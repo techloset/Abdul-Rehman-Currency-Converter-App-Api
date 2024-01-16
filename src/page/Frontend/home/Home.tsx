@@ -7,7 +7,7 @@ import {
 } from "../../../store/reducer/ConverterReducer";
 
 export default function Home() {
-  
+
   const dispatch = useAppDispatch();
 
   const { oneCurrency, handleDropDown, countrySymbols,
@@ -62,7 +62,7 @@ export default function Home() {
                         ([currencyCode, currencyname]) => {
                           if (currencyCode !== targetCurrency) {
                             return (
-                              <option  key={currencyCode} value={currencyCode}>
+                              <option key={currencyCode} value={currencyCode}>
                                 {currencyCode} &nbsp; &nbsp;
                                 {currencyname}
                               </option>
@@ -75,7 +75,7 @@ export default function Home() {
                 </div>
 
                 <span className="flex items-center mx-3">
-                  <img src={logo}  alt="logo"/>
+                  <img src={logo} alt="logo" />
                 </span>
 
                 <div className="relative mt-2 rounded-sm shadow-sm ">
@@ -103,7 +103,7 @@ export default function Home() {
                       }}
                       className="h-full rounded-sm focus:outline-none w-24 border-x-2 bg-transparent py-0 pl-2 pr-7 text-gray-500 sm:text-sm"
                     >
-                      {Object.entries(countrySymbols).map(
+                      {Object.entries(countrySymbols ?? {}).map(
                         ([currencyCode, currencyname]) => {
                           if (currencyCode !== sourceCurrency) {
                             return (
