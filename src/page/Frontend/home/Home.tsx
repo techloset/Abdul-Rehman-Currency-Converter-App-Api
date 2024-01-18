@@ -1,35 +1,58 @@
 import UseHome from "../../../hooks/UseHome";
 import logo from "../../../assets/images/Vector.png";
 import { useAppDispatch } from "../../../store/storeHook";
-import {
-  updateSourceCurrency,
-  updateTargetCurrency,
-} from "../../../store/reducer/ConverterReducer";
+import { updateTargetCurrency } from "../../../store/reducer/ConverterReducer";
 
 export default function Home() {
-
   const dispatch = useAppDispatch();
 
-  const { oneCurrency, handleDropDown, countrySymbols,
-    targetCurrency, sourceCurrency, setAmount, setSelectedCurrency,
-    convertedAmount, setConvertedAmount, handleConversion,
+  const {
+    updateName2,
+    loading,
+    updateName,
+    setIsActive2,
+    isActive2,
+    setIsActive,
+    isActive,
+    setSearchWord,
+    searchWord,
+    switchBtn,
+    setAmount,
+    oneCurrency,
+    handleDropDown,
+    convertedAmount,
+    setSelectedCurrency,
+    sourceCurrency,
+    targetCurrency,
+    setConvertedAmount,
+    handleConversion,
+    countrySymbols,
   } = UseHome();
 
-  return (
+  const filteredCountryList = Object.entries(countrySymbols ?? {}).filter(
+    ([currencyCode, country]) =>
+      currencyCode !== targetCurrency &&
+      (currencyCode.toLowerCase().includes(searchWord.toLowerCase()) ||
+        country.toLowerCase().includes(searchWord.toLowerCase()))
+  );
 
+  return (
     <>
       <div className="mb-28">
         <div className="text-center mb-20 bg-blue-50 h-96">
           <div className="my-20">
-            <h1 className="text-6xl  font-bold  font-['Roboto'] leading-[100px] text-zinc-900"> Currency Converter</h1>
-            <p className="text-base font-normal font-['Roboto'] leading-[42px]">
+            <h1 className="text-6xl  font-bold  font-Roboto leading-[100px] text-zinc-900">
+              {" "}
+              Currency Converter
+            </h1>
+            <p className="text-base font-normal font-Roboto leading-[42px]">
               Need to make an international business payment? Take a look at our
               live foreign exchange rates.
             </p>
           </div>
           <div className="flex m-3  justify-center">
-            <div className=" p-8 border-2  drop-shadow-lg w-[900px]  md:w-[850px] h-[375px] md:h-[321px] bg-white rounded-lg shadow text-center">
-              <h2 className="text-[20px] sm:text-[32px] font-bold font-['Roboto'] leading-[24px] sm:leading-[42px] ">
+            <div className=" p-8 border-2 mx-6  drop-shadow-lg w-[900px]  md:w-[850px] h-[375px] md:h-[321px] bg-white rounded-lg shadow text-center">
+              <h2 className="text-[20px] sm:text-[32px] font-bold font-Roboto leading-[24px] sm:leading-[42px] ">
                 Make fast and affordable <br />
                 international business payments
               </h2>
@@ -39,8 +62,7 @@ export default function Home() {
               </p>
 
               <div className="flex  flex-col justify-between mx-10 md:flex-row lg:flex-row ">
-
-                <div className="relative mt-2 rounded-sm shadow-sm  ">
+                <div className="relative w-[300px]  mt-2 rounded-sm shadow-sm  ">
                   <input
                     type="number"
                     name="initialCurrency"
@@ -49,87 +71,134 @@ export default function Home() {
                     className="remove-arrow block w-full  focus:outline-none focus:ring   border-0 py-2 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400  sm:text-sm sm:leading-6 "
                     placeholder="0.00"
                   />
-                  <div className="absolute rounded-sm inset-y-0 right-0 flex items-center">
-                    <select
-                      onChange={(e) => {
-                        dispatch(updateSourceCurrency(e.target.value));
-                      }}
-                      value={sourceCurrency}
-                      id="currency"
-                      name="currency"
-                      className=" focus:outline-none  rounded-sm w-24  border-x-2 bg-transparent py-0 pl-2 pr-7 text-gray-500   sm:text-sm">
-                      {Object.entries(countrySymbols ?? {}).map(
-                        ([currencyCode, currencyname]) => {
-                          if (currencyCode !== targetCurrency) {
+                  <div
+                    className={`wrapper flex w-fit border-2 absolute inset-y-0 right-0  px-6   ${
+                      isActive ? "active" : ""
+                    }`}
+                  >
+                    <div
+                      className="select-btn relative right-0"
+                      onClick={() => setIsActive(!isActive)}
+                    >
+                      <span>{sourceCurrency || ""}</span>
+                    </div>
+                    <div className="content  absolute right-0 top-full hidden p-6 mt-[60px]  bg-white w-[300px]  max-h-[340px] overflow-y-auto pr-[7px] rounded-md  drop-shadow-md h-[340px]">
+                      <div className="search bg-white">
+                        <input
+                          spellCheck={false}
+                          type="text"
+                          placeholder="Search"
+                          className="bg-white border-b-2 h-[40px] w-full focus:outline-none text-[15px] px-[20px] "
+                          value={searchWord}
+                          onChange={(e) => setSearchWord(e.target.value)}
+                        />
+                      </div>
+                      <ul className="options bg-white w-full overflow-y-auto pr-[7px] mt-2">
+                        {filteredCountryList.map(
+                          ([currencyCode, country], index) => {
                             return (
-                              <option key={currencyCode} value={currencyCode}>
-                                {currencyCode} &nbsp; &nbsp;
-                                {currencyname}
-                              </option>
+                              <li
+                                key={index}
+                                onClick={() => updateName(currencyCode)}
+                                className={
+                                  currencyCode === sourceCurrency
+                                    ? "selected"
+                                    : ""
+                                }
+                              >
+                                <span className="font-bold mr-3">
+                                  {currencyCode}
+                                </span>
+                                <span className="text-[13px] w-40">
+                                  {country}
+                                </span>
+                              </li>
                             );
                           }
-                        }
-                      )}
-                    </select>
+                        )}
+                      </ul>
+                    </div>
                   </div>
                 </div>
-
-                <span className="flex items-center mx-3">
+                <button
+                  onClick={switchBtn}
+                  className="flex items-center mx-3 border-none"
+                >
                   <img src={logo} alt="logo" />
-                </span>
-
-                <div className="relative mt-2 rounded-sm shadow-sm ">
+                </button>
+                <div className="relative w-[300px]  mt-2 rounded-sm shadow-sm  ">
                   <input
                     type="number"
-                    name="price"
+                    name="initialCurrency"
                     value={convertedAmount}
+                    onChange={(e) => {
+                      dispatch(updateTargetCurrency(e.target.value));
+                      setConvertedAmount(0);
+                    }}
                     id="price"
-                    className="block w-full focus:outline-none   border-0 py-2 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+                    className="remove-arrow block w-full  focus:outline-none focus:ring   border-0 py-2 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400  sm:text-sm sm:leading-6 "
                     placeholder="0.00"
-                    disabled
                   />
-                  <div className="absolute rounded-sm inset-y-0 right-0 flex items-center">
-                    <label htmlFor="currency" className="sr-only">
-                      Currency
-                    </label>
-
-                    <select
-                      id="currency"
-                      name="currency"
-                      value={targetCurrency}
-                      onChange={(e) => {
-                        dispatch(updateTargetCurrency(e.target.value));
-                        setConvertedAmount(0);
-                      }}
-                      className="h-full rounded-sm focus:outline-none w-24 border-x-2 bg-transparent py-0 pl-2 pr-7 text-gray-500 sm:text-sm"
+                  <div
+                    className={`wrapper flex w-fit border-2 absolute inset-y-0 right-0  px-6   ${
+                      isActive2 ? "active" : ""
+                    }`}
+                  >
+                    <div
+                      className="select-btn relative right-0"
+                      onClick={() => setIsActive2(!isActive2)}
                     >
-                      {Object.entries(countrySymbols ?? {}).map(
-                        ([currencyCode, currencyname]) => {
-                          if (currencyCode !== sourceCurrency) {
+                      <span>{targetCurrency || ""}</span>
+                    </div>
+                    <div className="content absolute right-0 top-full hidden p-6  bg-white w-[300px] mt-[10px] max-h-[340px]  overflow-y-auto pr-[7px] rounded-md  drop-shadow-md h-[340px]">
+                      <div className="search bg-white">
+                        <input
+                          spellCheck={false}
+                          type="text"
+                          placeholder="Search"
+                          className="bg-white border-b-2 h-[40px] w-full focus:outline-none text-[15px] px-[20px] "
+                          value={searchWord}
+                          onChange={(e) => setSearchWord(e.target.value)}
+                        />
+                      </div>
+                      <ul className="options bg-white w-full overflow-y-auto pr-[7px] mt-2">
+                        {filteredCountryList.map(
+                          ([currencyCode, country], index) => {
                             return (
-                              <option key={currencyCode} value={currencyCode}>
-                                {currencyCode}  &nbsp; &nbsp;
-                                {currencyname}
-                              </option>
+                              <li
+                                key={index}
+                                onClick={() => updateName2(currencyCode)}
+                                className={
+                                  currencyCode === targetCurrency
+                                    ? "selected"
+                                    : ""
+                                }
+                              >
+                                <span className="font-bold mr-3">
+                                  {currencyCode}
+                                </span>
+                                <span className="text-[13px] w-40">
+                                  {country}
+                                </span>
+                              </li>
                             );
                           }
-                        }
-                      )}
-                    </select>
+                        )}
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
               <div className="flex flex-col  justify-center  mx-10 my-7 md:flex-row md:justify-between lg:flex-row sm:flex-col lg:justify-between ">
                 <span className="font-bold  text-[12px] sm:text-[30]  md:py-3">
-                  1.00  {sourceCurrency} = {oneCurrency ? oneCurrency : 0} &nbsp;
+                  1.00 {sourceCurrency} = {oneCurrency ? oneCurrency : 0} &nbsp;
                   {targetCurrency}
                 </span>
                 <button
                   onClick={handleConversion}
                   className="border-2 rounded-md border-red-500 px-16 py-2 md:w-80 md:aglin-center  bg-red-500 text-white font-bold hover:bg-white hover:text-red-500"
-
                 >
-                  Get Started
+                  {loading ? "Loading..." : "Get Started"}
                 </button>
               </div>
             </div>
@@ -160,15 +229,18 @@ export default function Home() {
         <div className="flex flex-col text-center items-center justify-center    sm:flex-row  mt-3">
           <select
             className="w-10/12 sm:w-4/12  h-10 rounded-md mt-3 p-1 border-2 text-gray-400 focus:outline-none "
-            onChange={(e) => { setSelectedCurrency(e.target.value); }}>
+            onChange={(e) => {
+              setSelectedCurrency(e.target.value);
+            }}
+          >
             <option value="">select Currency</option>
-            <option value="USD">USD</option>
-            <option value="EUR">EUR</option>
-            <option value="JPY">JPY</option>
-            <option value="KWD">KWD</option>
-            <option value="BHD">BHD</option>
-            <option value="OMR">OMR</option>
-            <option value="JOD">JOD</option>
+            <option value="USD">USD United States</option>
+            <option value="EUR">EUR Europe</option>
+            <option value="JPY">JPY JAPAN</option>
+            <option value="KWD">KWD Kuwait</option>
+            <option value="BHD">BHD Bahrain</option>
+            <option value="OMR">OMR Oman</option>
+            <option value="JOD">JOD Jordan</option>
           </select>
           <button
             onClick={handleDropDown}
@@ -178,8 +250,6 @@ export default function Home() {
           </button>
         </div>
       </div>
-
-
     </>
   );
 }

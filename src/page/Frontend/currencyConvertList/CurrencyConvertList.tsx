@@ -1,33 +1,45 @@
 import logo from "../../../assets/images/pngwing.com.png";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import logo2 from "../../../assets/images/arrow-right.png";
-import UseConrrencyConvertList from "../../../hooks/UseConrrencyConvertList";
+import UseCurrencyConvertList from "../../../hooks/UseCurrencyConvertList";
 import { useAppDispatch } from "../../../store/storeHook";
 import {
   updateSourceCurrency,
   updateTargetCurrency,
 } from "../../../store/reducer/ConverterReducer";
-import { useState } from "react";
+import {  useState } from "react";
 
-export default function ConrencyConvertList() {
-  const [currenyTo, setCurrenyTo] = UseConrrencyConvertList();
+export default function CurrencyConvertList() {
+  const [popularCurrency,countryName] = UseCurrencyConvertList();
   const [selectedCurrency, setSelectedCurrency] = useState("");
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-
-
-  const list = ["USD", "EUR", "JOD", "OMR", "PKR", "INR", "AFN", "AED", "AUD", "QAR", "VND", "CAD",];
+  
+  const list = [
+    "USD",
+    "EUR",
+    "JOD",
+    "OMR",
+    "PKR",
+    "INR",
+    "AFN",
+    "AED",
+    "AUD",
+    "QAR",
+    "VND",
+    "CAD",
+  ];
   return (
     <>
       <div className="bg-sky-200 py-12">
         <div className="flex justify-around">
           <div className="w-12/12 sm:w-6/12 ">
-            <h1 className="text-3xl font-bold">United State Dollar</h1>
+            <h1 className="text-3xl font-bold">{countryName ?? null}</h1>
             <p className="py-3">
               The United States Dollar is the official currency of the United
               States and several other countries. Its currency code is USD and
-              it’s symbolised using the $ sign. $1 is made up of 100 cents. With
+              it’s symbol using the $ sign. $1 is made up of 100 cents. With
               a World Account, you can pay and collect USD using local bank
               details – and you don’t need an overseas address.
             </p>
@@ -44,7 +56,7 @@ export default function ConrencyConvertList() {
       <div className="text-center mt-20">
         <h1 className="text-2xl font-bold">
           Exchange &nbsp;
-          <span>{typeof currenyTo === "string" ? currenyTo : null}</span>
+          <span>{popularCurrency ?? null}</span>
           &nbsp; without hidden fees
         </h1>
         Wherever you need to send
@@ -59,27 +71,25 @@ export default function ConrencyConvertList() {
         <div className="flex px-10 justify-center mb-8">
           <div className="flex sm:block md:flex">
             <div className="grid grid-rows-4 md:grid-rows-3 grid-flow-col ">
-              {list.slice(0, 12)?.map((item, i) => {
-                if (currenyTo !== item) {
-                  return (
-                    <li
-                      key={i}
-                      className="flex justify-center items-center w-36 p-4 font-bold  list-none mx-5 my-4 cursor-pointer"
-                      style={{ backgroundColor: "#f6f6f6" }}
-                      onClick={() => {
-                        dispatch(updateSourceCurrency(currenyTo as string));
-                        dispatch(updateTargetCurrency(item));
-                        navigate(`/convert?from=${currenyTo}&to=${item}`);
-                      }}
-                    >
-                      {typeof currenyTo === "string" ? currenyTo : null}
-                      <img src={logo2} className="w-3 h-3 mx-6" />
-                      <span>{item}</span>
-                    </li>
-                  );
-                }
-              })}
-
+              {list
+                .slice(0, 12)
+                .filter((item) => popularCurrency !== item)
+                .map((item, i) => (
+                  <li
+                    key={i}
+                    className="flex justify-center items-center w-36 p-4 font-bold list-none mx-5 my-4 cursor-pointer"
+                    style={{ backgroundColor: "#f6f6f6" }}
+                    onClick={() => {
+                      dispatch(updateSourceCurrency(popularCurrency as string));
+                      dispatch(updateTargetCurrency(item as string));
+                      navigate(`/convert?from=${popularCurrency}&to=${item}`);
+                    }}
+                  >
+                    {popularCurrency ?? null}
+                    <img src={logo2} alt="logo2" className="w-3 h-3 mx-6" />
+                    <span>{item}</span>
+                  </li>
+                ))}
             </div>
           </div>
         </div>
@@ -92,24 +102,26 @@ export default function ConrencyConvertList() {
               onChange={(e) => setSelectedCurrency(e.target.value)}
               className="text-center w-4/12 p-1 border-2 text-gray-400"
             >
-              {list?.map((item, i) => {
-                if (currenyTo !== item) {
-                  return (
-                    <option key={i} value={item}>
-                      {typeof currenyTo === "string" ? currenyTo : null}&nbsp;&nbsp;{"To"}&nbsp;&nbsp;{item}
-                    </option>
-                  );
-                }
-              })}
+              {list
+                ?.filter((item) => popularCurrency !== item)
+                .map((item, i) => (
+                  <option key={i} value={item}>
+                    {typeof popularCurrency === "string"
+                      ? `${popularCurrency} To ${item}`
+                      : null}
+                  </option>
+                ))}
             </select>
           </div>
 
           <button
             className="border-2 mt-3 rounded-md border-red-500 mx-4 px-8 py-1 bg-red-500 text-white font-bold hover:bg-white hover:text-red-500"
             onClick={() => {
-              dispatch(updateSourceCurrency(currenyTo as string));
+              dispatch(updateSourceCurrency(popularCurrency as string));
               dispatch(updateTargetCurrency(selectedCurrency));
-              navigate(`/convert?from=${currenyTo}&to=${selectedCurrency}`);
+              navigate(
+                `/convert?from=${popularCurrency}&to=${selectedCurrency}`
+              );
             }}
           >
             Get Started

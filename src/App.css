@@ -1,0 +1,55 @@
+
+.select-btn,
+li {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+}
+
+
+
+
+.wrapper.active .content {
+    display: block;
+
+}
+
+.content .search {
+    position: relative;
+}
+
+
+
+
+.search input::placeholder {
+    color: #bfbfbf;
+}
+
+.options::-webkit-scrollbar {
+    width: 7px;
+}
+
+.options::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 25px;
+}
+
+.options::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 25px;
+}
+
+.options::-webkit-scrollbar-thumb:hover {
+    background: #b3b3b3;
+}
+
+.options li {
+    height: 40px;
+}
+
+.options li:hover,
+li.selected {
+    border-radius: 5px;
+    background: #f2f2f2;
+}
