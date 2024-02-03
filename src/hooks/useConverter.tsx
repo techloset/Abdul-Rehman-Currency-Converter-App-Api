@@ -11,12 +11,6 @@ export default function useConverter() {
   const [amount, setAmount] = useState<number>(0);
   const { sourceCurrency, targetCurrency } = useAppSelector((state) => state);
   const [convertedAmount, setConvertedAmount] = useState(0);
-  const [symbolsOption, setSymbolsOption] = useState<Record<string, string>>(
-    {}
-  );
-  const [countrySymbols, setCountrySymbols] = useState<Record<string, string>>(
-    {}
-  );
   const [selectedCurrency, setSelectedCurrency] = useState("");
   const [oneCurrency, setOneCurrency] = useState<number>(0);
   const [searchWord, setSearchWord] = useState("");
@@ -34,11 +28,9 @@ export default function useConverter() {
       Object.keys(exchangeRates).length > 0 &&
       Object.keys(symbols).length > 0
     ) {
-      setSymbolsOption(exchangeRates);
-      setCountrySymbols(symbols);
       setLoading(stateLoading);
     }
-  }, [exchangeRates, symbols,stateLoading]);
+  }, [exchangeRates, symbols, stateLoading]);
 
   useEffect(() => {
     dispatch(fetchCurrencyExchangeSymbols());
@@ -47,16 +39,16 @@ export default function useConverter() {
 
   useEffect(() => {
     const amountOne = 1;
-    const sourceRate = parseFloat(symbolsOption[sourceCurrency]);
-    const targetRate = parseFloat(symbolsOption[targetCurrency]);
+    const sourceRate = parseFloat(exchangeRates[sourceCurrency]);
+    const targetRate = parseFloat(exchangeRates[targetCurrency]);
     const exchangeRateAmount = amountOne / sourceRate;
     const oneConverted = exchangeRateAmount * targetRate;
     setOneCurrency(oneConverted);
-  }, [targetCurrency, sourceCurrency, symbolsOption]);
+  }, [targetCurrency, sourceCurrency, exchangeRates]);
 
   const handleConversion = () => {
-    const targetRate = parseFloat(symbolsOption[targetCurrency]);
-    const sourceRate = parseFloat(symbolsOption[sourceCurrency]);
+    const targetRate = parseFloat(exchangeRates[targetCurrency]);
+    const sourceRate = parseFloat(exchangeRates[sourceCurrency]);
     const exchangeRateAmount = amount / sourceRate;
     const converted = exchangeRateAmount * targetRate;
     setConvertedAmount(converted);
@@ -80,7 +72,7 @@ export default function useConverter() {
     setIsActive2(false);
   };
 
-  const filteredCountryList = Object.entries(countrySymbols ?? {}).filter(
+  const filteredCountryList = Object.entries(exchangeRates ?? {}).filter(
     ([currencyCode, country]) =>
       currencyCode !== targetCurrency &&
       (currencyCode.toLowerCase().includes(searchWord.toLowerCase()) ||
@@ -105,11 +97,10 @@ export default function useConverter() {
     convertedAmount,
     selectedCurrency,
     setSelectedCurrency,
-    symbolsOption,
+    exchangeRates,
     sourceCurrency,
     targetCurrency,
     setConvertedAmount,
     handleConversion,
-    countrySymbols,
   };
 }

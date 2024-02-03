@@ -13,12 +13,6 @@ export default function useHero() {
   const [amount, setAmount] = useState<number>(0);
   const { sourceCurrency, targetCurrency } = useAppSelector((state) => state);
   const [convertedAmount, setConvertedAmount] = useState(0);
-  const [symbolsOption, setSymbolsOption] = useState<Record<string, string>>(
-    {}
-  );
-  const [countrySymbols, setCountrySymbols] = useState<Record<string, string>>(
-    {}
-  );
   const [selectedCurrency, setSelectedCurrency] = useState("");
   const [oneCurrency, setOneCurrency] = useState<number>(0);
   const [searchWord, setSearchWord] = useState("");
@@ -33,8 +27,6 @@ export default function useHero() {
   const stateLoading = useAppSelector((state) => state.loading);
 
   useEffect(() => {
-    setSymbolsOption(exchangeRates);
-    setCountrySymbols(symbols);
     setLoading(stateLoading);
   }, [exchangeRates, symbols,stateLoading]);
 
@@ -45,16 +37,16 @@ export default function useHero() {
 
   useEffect(() => {
     const amountOne = 1;
-    const sourceRate = parseFloat(symbolsOption[sourceCurrency]);
-    const targetRate = parseFloat(symbolsOption[targetCurrency]);
+    const sourceRate = parseFloat(exchangeRates[sourceCurrency]);
+    const targetRate = parseFloat(exchangeRates[targetCurrency]);
     const exchangeRateAmount = amountOne / sourceRate;
     const oneConverted = exchangeRateAmount * targetRate;
     setOneCurrency(oneConverted);
-  }, [targetCurrency, sourceCurrency, symbolsOption]);
+  }, [targetCurrency, sourceCurrency, exchangeRates]);
 
   const handleConversion = () => {
-    const targetRate = parseFloat(symbolsOption[targetCurrency]);
-    const sourceRate = parseFloat(symbolsOption[sourceCurrency]);
+    const targetRate = parseFloat(exchangeRates[targetCurrency]);
+    const sourceRate = parseFloat(exchangeRates[sourceCurrency]);
     const exchangeRateAmount = amount / sourceRate;
     const converted = exchangeRateAmount * targetRate;
     setConvertedAmount(converted);
@@ -88,27 +80,24 @@ export default function useHero() {
 
   return {
     updateName2,
+    loading,
     updateName,
     setIsActive2,
     isActive2,
     setIsActive,
     isActive,
     setSearchWord,
-    switchBtn,
     searchWord,
+    switchBtn,
     setAmount,
     oneCurrency,
-    amount,
     handleDropDown,
     convertedAmount,
-    selectedCurrency,
     setSelectedCurrency,
-    symbolsOption,
-    loading,
     sourceCurrency,
     targetCurrency,
     setConvertedAmount,
-    handleConversion,
-    countrySymbols,
+    handleConversion,    
+    symbols,
   };
 }

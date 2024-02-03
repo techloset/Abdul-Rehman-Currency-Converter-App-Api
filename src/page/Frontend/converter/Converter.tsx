@@ -24,13 +24,13 @@ export default function Converter() {
     targetCurrency,
     setConvertedAmount,
     handleConversion,
-    countrySymbols,
+    exchangeRates,
     loading
   } = useConverter();
 
   console.log("oneCurrency", oneCurrency);
 
-  const filteredCountryList = Object.entries(countrySymbols ?? {}).filter(
+  const filteredCountryList = Object.entries(exchangeRates ?? {}).filter(
     ([currencyCode, country]) =>
       currencyCode !== targetCurrency &&
       (currencyCode.toLowerCase().includes(searchWord.toLowerCase()) ||
