@@ -1,4 +1,4 @@
-import useHome from "../../../hooks/useHome"
+import useHome from "../../../hooks/useHome";
 import logo from "../../../assets/images/Vector.png";
 import { useAppDispatch } from "../../../store/storeHook";
 import { updateTargetCurrency } from "../../../store/reducer/ConverterReducer";
@@ -26,10 +26,10 @@ export default function Home() {
     targetCurrency,
     setConvertedAmount,
     handleConversion,
-    countrySymbols,
+    symbols,
   } = useHome();
 
-  const filteredCountryList = Object.entries(countrySymbols ?? {}).filter(
+  const filteredCountryList = Object.entries(symbols ?? {}).filter(
     ([currencyCode, country]) =>
       currencyCode !== targetCurrency &&
       (currencyCode.toLowerCase().includes(searchWord.toLowerCase()) ||
@@ -82,7 +82,7 @@ export default function Home() {
                     >
                       <span>{sourceCurrency || ""}</span>
                     </div>
-                    <div className="content  absolute right-0 top-full hidden p-6   bg-white w-[300px]  max-h-[340px] overflow-y-auto pr-[7px] rounded-md  drop-shadow-md h-[340px]">
+                    <div className="content  absolute right-0 top-full hidden p-6 mt-[60px]  bg-white w-[300px]  max-h-[340px] overflow-y-auto pr-[7px] rounded-md  drop-shadow-md h-[340px]">
                       <div className="search bg-white">
                         <input
                           spellCheck={false}
