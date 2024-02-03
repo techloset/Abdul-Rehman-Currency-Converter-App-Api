@@ -1,7 +1,7 @@
 import logo from "../../../assets/images/pngwing.com.png";
 import { useNavigate } from "react-router-dom";
 import logo2 from "../../../assets/images/arrow-right.png";
-import UseCurrencyConvertList from "../../../hooks/UseCurrencyConvertList";
+import useCurrencyConvertList from "../../../hooks/useCurrencyConvertList";
 import { useAppDispatch } from "../../../store/storeHook";
 import {
   updateSourceCurrency,
@@ -10,7 +10,7 @@ import {
 import {  useState } from "react";
 
 export default function CurrencyConvertList() {
-  const [popularCurrency,countryName] = UseCurrencyConvertList();
+  const [popularCurrency,countryName] = useCurrencyConvertList();
   const [selectedCurrency, setSelectedCurrency] = useState("");
   const dispatch = useAppDispatch();
   const navigate = useNavigate();

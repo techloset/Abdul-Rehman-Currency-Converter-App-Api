@@ -1,8 +1,7 @@
-import UseConverter from "../../../hooks/UseConverter";
+import useConverter from "../../../hooks/useConverter";
 import { updateTargetCurrency } from "../../../store/reducer/ConverterReducer";
 import { useAppDispatch } from "../../../store/storeHook";
 import logo from "../../../assets/images/Vector.png";
-import { useEffect } from "react";
 
 export default function Converter() {
   
@@ -25,13 +24,13 @@ export default function Converter() {
     targetCurrency,
     setConvertedAmount,
     handleConversion,
-    countrySymbols,
+    exchangeRates,
     loading
-  } = UseConverter();
+  } = useConverter();
 
   console.log("oneCurrency", oneCurrency);
 
-  const filteredCountryList = Object.entries(countrySymbols ?? {}).filter(
+  const filteredCountryList = Object.entries(exchangeRates ?? {}).filter(
     ([currencyCode, country]) =>
       currencyCode !== targetCurrency &&
       (currencyCode.toLowerCase().includes(searchWord.toLowerCase()) ||

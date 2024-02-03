@@ -1,5 +1,6 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import instance from "../../helper/Instance";
 
 interface CurrencyState {
   base: string;
@@ -24,15 +25,13 @@ const initialState: CurrencyState = {
 };
 
 const apiKey = process.env.REACT_APP_EXCHANGE_API_KEY;
-
-const urlApi = `https://route-handler-bootcamp.vercel.app/api/http:/api.exchangeratesapi.io/v1/symbols?access_key=${apiKey}`;
-const urlApiExChange = `https://route-handler-bootcamp.vercel.app/api/http:/api.exchangeratesapi.io/v1/latest?access_key=${apiKey}`;
-
 export const fetchCurrencyExchangeSymbols = createAsyncThunk(
   "currencyExchangeOption/fetchCurrencyExchangeOption",
   async () => {
     try {
-      const response = await axios.get(urlApi);
+      const response = await instance.get('symbols', { params: { access_key: apiKey } });
+     
+
       return response.data.symbols;
     } catch (error) {
       throw error;
@@ -44,7 +43,8 @@ export const fetchCurrencyExchange = createAsyncThunk(
   "currencyExchange/fetchCurrencyExchange",
   async () => {
     try {
-      const response = await axios.get(urlApiExChange);
+      const response = await instance.get('latest', { params: { access_key: apiKey } });
+
       return response.data;
     } catch (error) {
       throw error;
