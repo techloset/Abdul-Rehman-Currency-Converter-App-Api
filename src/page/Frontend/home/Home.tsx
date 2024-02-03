@@ -82,7 +82,7 @@ export default function Home() {
                     >
                       <span>{sourceCurrency || ""}</span>
                     </div>
-                    <div className="content  absolute right-0 top-full hidden p-6 mt-[60px]  bg-white w-[300px]  max-h-[340px] overflow-y-auto pr-[7px] rounded-md  drop-shadow-md h-[340px]">
+                    <div className="content  absolute right-0 top-full hidden p-6   bg-white w-[300px]  max-h-[340px] overflow-y-auto pr-[7px] rounded-md  drop-shadow-md h-[340px]">
                       <div className="search bg-white">
                         <input
                           spellCheck={false}
