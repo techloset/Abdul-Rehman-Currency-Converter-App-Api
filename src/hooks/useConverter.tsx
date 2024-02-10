@@ -72,15 +72,9 @@ export default function useConverter() {
     setIsActive2(false);
   };
 
-  const filteredCountryList = Object.entries(exchangeRates ?? {}).filter(
-    ([currencyCode, country]) =>
-      currencyCode !== targetCurrency &&
-      (currencyCode.toLowerCase().includes(searchWord.toLowerCase()) ||
-        country.toLowerCase().includes(searchWord.toLowerCase()))
-  );
+  
 
   return {
-    filteredCountryList,
     loading,
     updateName2,
     updateName,
@@ -102,5 +96,6 @@ export default function useConverter() {
     targetCurrency,
     setConvertedAmount,
     handleConversion,
+    symbols
   };
 }

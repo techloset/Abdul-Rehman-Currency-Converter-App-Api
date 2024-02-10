@@ -1,7 +1,7 @@
-import useHome from "../../../hooks/useHome";
-import logo from "../../../assets/images/Vector.png";
-import { useAppDispatch } from "../../../store/storeHook";
-import { updateTargetCurrency } from "../../../store/reducer/ConverterReducer";
+import useHome from "../../hooks/useHome";
+import logo from "../../assets/images/Vector.png";
+import { useAppDispatch } from "../../store/storeHook";
+import { updateTargetCurrency } from "../../store/reducer/ConverterReducer";
 
 export default function Home() {
   const dispatch = useAppDispatch();
@@ -83,7 +83,7 @@ export default function Home() {
                       <span>{sourceCurrency || ""}</span>
                     </div>
                     <div className="content  absolute right-0 top-full hidden p-6 mt-[60px] md:mt-0  bg-white w-[300px]  max-h-[340px] overflow-y-auto pr-[7px] rounded-md  drop-shadow-md h-[340px]">
-                      <div className="search bg-white">
+                      <div className="search relative bg-white">
                         <input
                           spellCheck={false}
                           type="text"
@@ -93,7 +93,7 @@ export default function Home() {
                           onChange={(e) => setSearchWord(e.target.value)}
                         />
                       </div>
-                      <ul className="options bg-white w-full overflow-y-auto pr-[7px] mt-2">
+                      <ul className="options  overflow-y-auto scrollbar-w-2 scrollbar-track-gray-100 scrollbar-thumb-gray-400 scrollbar-thumb-hover:gray-300 bg-white w-full overflow-y-auto pr-[7px] mt-2">
                         {filteredCountryList.map(
                           ([currencyCode, country], index) => {
                             return (
@@ -151,7 +151,7 @@ export default function Home() {
                       <span>{targetCurrency || ""}</span>
                     </div>
                     <div className="content absolute right-0 top-full hidden p-6  bg-white w-[300px] mt-[10px] max-h-[340px]  overflow-y-auto pr-[7px] rounded-md  drop-shadow-md h-[340px]">
-                      <div className="search bg-white">
+                      <div className="search relative bg-white">
                         <input
                           spellCheck={false}
                           type="text"
@@ -161,7 +161,7 @@ export default function Home() {
                           onChange={(e) => setSearchWord(e.target.value)}
                         />
                       </div>
-                      <ul className="options bg-white w-full overflow-y-auto pr-[7px] mt-2">
+                      <ul className="options overflow-y-auto scrollbar-w-2 scrollbar-track-gray-100 scrollbar-thumb-gray-400 scrollbar-thumb-hover:gray-300 bg-white w-full overflow-y-auto pr-[7px] mt-2">
                         {filteredCountryList.map(
                           ([currencyCode, country], index) => {
                             return (

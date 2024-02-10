@@ -1,12 +1,12 @@
-import logo from "../../../assets/images/pngwing.com.png";
+import logo from "../../assets/images/pngwing.com.png";
 import { useNavigate } from "react-router-dom";
-import logo2 from "../../../assets/images/arrow-right.png";
-import useCurrencyConvertList from "../../../hooks/useCurrencyConvertList";
-import { useAppDispatch } from "../../../store/storeHook";
+import logo2 from "../../assets/images/arrow-right.png";
+import useCurrencyConvertList from "../../hooks/useCurrencyConvertList";
+import { useAppDispatch } from "../../store/storeHook";
 import {
   updateSourceCurrency,
   updateTargetCurrency,
-} from "../../../store/reducer/ConverterReducer";
+} from "../../store/reducer/ConverterReducer";
 import {  useState } from "react";
 
 export default function CurrencyConvertList() {

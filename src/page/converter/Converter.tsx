@@ -1,10 +1,9 @@
-import useConverter from "../../../hooks/useConverter";
-import { updateTargetCurrency } from "../../../store/reducer/ConverterReducer";
-import { useAppDispatch } from "../../../store/storeHook";
-import logo from "../../../assets/images/Vector.png";
+import useConverter from "../../hooks/useConverter";
+import { updateTargetCurrency } from "../../store/reducer/ConverterReducer";
+import { useAppDispatch } from "../../store/storeHook";
+import logo from "../../assets/images/Vector.png";
 
 export default function Converter() {
-  
   const dispatch = useAppDispatch();
 
   const {
@@ -25,18 +24,18 @@ export default function Converter() {
     setConvertedAmount,
     handleConversion,
     exchangeRates,
-    loading
+    loading,
+    symbols
   } = useConverter();
 
   console.log("oneCurrency", oneCurrency);
 
-  const filteredCountryList = Object.entries(exchangeRates ?? {}).filter(
+  const filteredCountryList = Object.entries(symbols ?? {}).filter(
     ([currencyCode, country]) =>
       currencyCode !== targetCurrency &&
       (currencyCode.toLowerCase().includes(searchWord.toLowerCase()) ||
         country.toLowerCase().includes(searchWord.toLowerCase()))
   );
-
 
   return (
     <div className="mb-28">
@@ -83,42 +82,42 @@ export default function Converter() {
                   >
                     <span>{sourceCurrency || ""}</span>
                   </div>
-                  <div className="content mt-[60px] absolute  right-0 top-full  hidden padding-[20px] bg-white w-[300px]  max-h-[340px] overflow-y-auto pr-[7px] rounded-md  drop-shadow-md h-[340px]">
-                    <div className="search bg-white">
-                      <input
-                        spellCheck={false}
-                        type="text"
-                        placeholder="Search"
-                        className="bg-white border-b-2 h-[40px] w-full focus:outline-none text-[15px] px-[20px] "
-                        value={searchWord}
-                        onChange={(e) => setSearchWord(e.target.value)}
-                      />
+                  <div className="content  absolute right-0 top-full hidden p-6 mt-[60px] md:mt-0  bg-white w-[300px]  max-h-[340px] overflow-y-auto pr-[7px] rounded-md  drop-shadow-md h-[340px]">
+                      <div className="search relative bg-white">
+                        <input
+                          spellCheck={false}
+                          type="text"
+                          placeholder="Search"
+                          className="bg-white border-b-2 h-[40px] w-full focus:outline-none text-[15px] px-[20px] "
+                          value={searchWord}
+                          onChange={(e) => setSearchWord(e.target.value)}
+                        />
+                      </div>
+                      <ul className="options overflow-y-auto scrollbar-w-2 scrollbar-track-gray-100 scrollbar-thumb-gray-400 scrollbar-thumb-hover:gray-300 bg-white w-full overflow-y-auto pr-[7px] mt-2">
+                        {filteredCountryList.map(
+                          ([currencyCode, country], index) => {
+                            return (
+                              <li
+                                key={index}
+                                onClick={() => updateName(currencyCode)}
+                                className={
+                                  currencyCode === sourceCurrency
+                                    ? "selected"
+                                    : ""
+                                }
+                              >
+                                <span className="font-bold mr-3">
+                                  {currencyCode}
+                                </span>
+                                <span className="text-[13px] w-40">
+                                  {country}
+                                </span>
+                              </li>
+                            );
+                          }
+                        )}
+                      </ul>
                     </div>
-                    <ul className="options bg-white w-full overflow-y-auto pr-[7px] mt-2">
-                      {filteredCountryList.map(
-                        ([currencyCode, country], index) => {
-                          return (
-                            <li
-                              key={index}
-                              onClick={() => updateName(currencyCode)}
-                              className={
-                                currencyCode === sourceCurrency
-                                  ? "selected"
-                                  : ""
-                              }
-                            >
-                              <span className="font-bold mr-3">
-                                {currencyCode}
-                              </span>
-                              <span className="text-[13px] w-40">
-                                {country}
-                              </span>
-                            </li>
-                          );
-                        }
-                      )}
-                    </ul>
-                  </div>
                 </div>
               </div>
 
@@ -153,45 +152,44 @@ export default function Converter() {
                   >
                     <span>{targetCurrency || ""}</span>
                   </div>
-                  <div className="content mt-[60px] absolute  right-0 top-full  hidden padding-[20px] bg-white w-[300px]  max-h-[340px] overflow-y-auto pr-[7px] rounded-md  drop-shadow-md h-[340px]">
-                    <div className="search bg-white">
-                      <input
-                        spellCheck={false}
-                        type="text"
-                        placeholder="Search"
-                        className="bg-white border-b-2 h-[40px] w-full focus:outline-none text-[15px] px-[20px] "
-                        value={searchWord}
-                        onChange={(e) => setSearchWord(e.target.value)}
-                      />
+                  <div className="content absolute right-0 top-full hidden p-6  bg-white w-[300px] mt-[10px] max-h-[340px]  overflow-y-auto pr-[7px] rounded-md  drop-shadow-md h-[340px]">
+                      <div className="search relative bg-white">
+                        <input
+                          spellCheck={false}
+                          type="text"
+                          placeholder="Search"
+                          className="bg-white border-b-2 h-[40px] w-full focus:outline-none text-[15px] px-[20px] "
+                          value={searchWord}
+                          onChange={(e) => setSearchWord(e.target.value)}
+                        />
+                      </div>
+                      <ul className="options overflow-y-auto scrollbar-w-2 scrollbar-track-gray-100 scrollbar-thumb-gray-400 scrollbar-thumb-hover:gray-300 bg-white w-full overflow-y-auto pr-[7px] mt-2">
+                        {filteredCountryList.map(
+                          ([currencyCode, country], index) => {
+                            return (
+                              <li
+                                key={index}
+                                onClick={() => updateName2(currencyCode)}
+                                className={
+                                  currencyCode === targetCurrency
+                                    ? "selected"
+                                    : ""
+                                }
+                              >
+                                <span className="font-bold mr-3">
+                                  {currencyCode}
+                                </span>
+                                <span className="text-[13px] w-40">
+                                  {country}
+                                </span>
+                              </li>
+                            );
+                          }
+                        )}
+                      </ul>
                     </div>
-                    <ul className="options bg-white w-full overflow-y-auto pr-[7px] mt-2">
-                      {filteredCountryList.map(
-                        ([currencyCode, country], index) => {
-                          return (
-                            <li
-                              key={index}
-                              onClick={() => updateName2(currencyCode)}
-                              className={
-                                currencyCode === targetCurrency
-                                  ? "selected"
-                                  : ""
-                              }
-                            >
-                              <span className="font-bold mr-3">
-                                {currencyCode}
-                              </span>
-                              <span className="text-[13px] w-40">
-                                {country}
-                              </span>
-                            </li>
-                          );
-                        }
-                      )}
-                    </ul>
-                  </div>
                 </div>
               </div>
-
             </div>
             <div className="flex flex-col  justify-center  mx-10 my-7 md:flex-row md:justify-between lg:flex-row sm:flex-col lg:justify-between ">
               <span className="font-bold  text-[12px] sm:text-[30]  md:py-3">

@@ -1,6 +1,6 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import instance from "../../helper/Instance";
+import instance from "../../instance/Instance";
 
 interface CurrencyState {
   base: string;
@@ -25,12 +25,14 @@ const initialState: CurrencyState = {
 };
 
 const apiKey = process.env.REACT_APP_EXCHANGE_API_KEY;
+console.log("apiKey", apiKey);
 export const fetchCurrencyExchangeSymbols = createAsyncThunk(
   "currencyExchangeOption/fetchCurrencyExchangeOption",
   async () => {
     try {
-      const response = await instance.get('symbols', { params: { access_key: apiKey } });
-     
+      const response = await instance.get("symbols", {
+        params: { access_key: apiKey },
+      });
 
       return response.data.symbols;
     } catch (error) {
@@ -43,7 +45,9 @@ export const fetchCurrencyExchange = createAsyncThunk(
   "currencyExchange/fetchCurrencyExchange",
   async () => {
     try {
-      const response = await instance.get('latest', { params: { access_key: apiKey } });
+      const response = await instance.get("latest", {
+        params: { access_key: apiKey },
+      });
 
       return response.data;
     } catch (error) {
