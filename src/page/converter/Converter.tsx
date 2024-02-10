@@ -77,7 +77,7 @@ export default function Converter() {
                   }`}
                 >
                   <div
-                    className="select-btn relative right-0 "
+                    className="flex items-center cursor-pointer relative right-0 "
                     onClick={() => setIsActive(!isActive)}
                   >
                     <span>{sourceCurrency || ""}</span>
@@ -93,18 +93,18 @@ export default function Converter() {
                           onChange={(e) => setSearchWord(e.target.value)}
                         />
                       </div>
-                      <ul className="options overflow-y-auto scrollbar-w-2 scrollbar-track-gray-100 scrollbar-thumb-gray-400 scrollbar-thumb-hover:gray-300 bg-white w-full overflow-y-auto pr-[7px] mt-2">
+                      <ul className="options overflow-y-auto scrollbar-w-2 scrollbar-track-gray-100 scrollbar-thumb-gray-400 scrollbar-thumb-hover:gray-300 bg-white w-full pr-[7px] mt-2">
                         {filteredCountryList.map(
                           ([currencyCode, country], index) => {
                             return (
                               <li
                                 key={index}
                                 onClick={() => updateName(currencyCode)}
-                                className={
+                                className={`h-[40px] hover:rounded-[5px] flex items-center cursor-pointer  ${
                                   currencyCode === sourceCurrency
-                                    ? "selected"
+                                    ? "h-[40px] hover:rounded-[5px]"
                                     : ""
-                                }
+                                }`}
                               >
                                 <span className="font-bold mr-3">
                                   {currencyCode}
@@ -163,18 +163,18 @@ export default function Converter() {
                           onChange={(e) => setSearchWord(e.target.value)}
                         />
                       </div>
-                      <ul className="options overflow-y-auto scrollbar-w-2 scrollbar-track-gray-100 scrollbar-thumb-gray-400 scrollbar-thumb-hover:gray-300 bg-white w-full overflow-y-auto pr-[7px] mt-2">
+                      <ul className="options  scrollbar-w-2 scrollbar-track-gray-100 scrollbar-thumb-gray-400 scrollbar-thumb-hover:gray-300 bg-white w-full overflow-y-auto pr-[7px] mt-2">
                         {filteredCountryList.map(
                           ([currencyCode, country], index) => {
                             return (
                               <li
                                 key={index}
                                 onClick={() => updateName2(currencyCode)}
-                                className={
+                                className={`h-[40px] hover:rounded-[5px] flex items-center cursor-pointer  ${
                                   currencyCode === targetCurrency
-                                    ? "selected"
+                                    ? "h-[40px] hover:rounded-[5px]"
                                     : ""
-                                }
+                                }`}
                               >
                                 <span className="font-bold mr-3">
                                   {currencyCode}
