@@ -25,7 +25,6 @@ const initialState: CurrencyState = {
 };
 
 const apiKey = process.env.REACT_APP_EXCHANGE_API_KEY;
-console.log("apiKey", apiKey);
 export const fetchCurrencyExchangeSymbols = createAsyncThunk(
   "currencyExchangeOption/fetchCurrencyExchangeOption",
   async () => {
