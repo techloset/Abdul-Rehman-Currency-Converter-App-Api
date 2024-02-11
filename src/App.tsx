@@ -1,10 +1,10 @@
 import './App.css';
-import Navigation from './navigation/Navigation';
+import Routes from './routes/Routes';
 
 function App() {
   return (
     <>
-      <Navigation />
+      <Routes />
     </>
   );
 }
