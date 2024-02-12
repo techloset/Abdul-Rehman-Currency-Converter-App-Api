@@ -1,5 +1,5 @@
 import useConverter from "../../hooks/useConverter";
-import { updateTargetCurrency } from "../../store/reducer/ConverterReducer";
+import { updateTargetCurrency } from "../../store/reducer/converterReducer";
 import { useAppDispatch } from "../../store/storeHook";
 import logo from "../../assets/images/Vector.png";
 

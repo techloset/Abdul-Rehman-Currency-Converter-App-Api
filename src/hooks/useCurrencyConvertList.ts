@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from "../store/storeHook";
 import {
   fetchCurrencyExchangeSymbols,
   handleSelectedCurrency,
-} from "../store/reducer/ConverterReducer";
+} from "../store/reducer/converterReducer";
 import { useLocation } from "react-router-dom";
 
 export default function useCurrencyConvertList() {

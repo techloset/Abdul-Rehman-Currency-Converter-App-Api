@@ -5,7 +5,7 @@ import {
   fetchCurrencyExchangeSymbols,
   updateSourceCurrency,
   updateTargetCurrency,
-} from "../store/reducer/ConverterReducer";
+} from "../store/reducer/converterReducer";
 import { useAppDispatch, useAppSelector } from "../store/storeHook";
 import { useNavigate } from "react-router-dom";
 

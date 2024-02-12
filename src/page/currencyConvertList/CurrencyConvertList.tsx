@@ -6,7 +6,7 @@ import { useAppDispatch } from "../../store/storeHook";
 import {
   updateSourceCurrency,
   updateTargetCurrency,
-} from "../../store/reducer/ConverterReducer";
+} from "../../store/reducer/converterReducer";
 import {  useState } from "react";
 
 export default function CurrencyConvertList() {

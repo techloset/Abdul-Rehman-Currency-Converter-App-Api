@@ -1,7 +1,7 @@
 import React from 'react'
 import useHome from "../../hooks/useHome";
 import { useAppDispatch } from "../../store/storeHook";
-import { updateTargetCurrency } from "../../store/reducer/ConverterReducer";
+import { updateTargetCurrency } from "../../store/reducer/converterReducer";
 import logo from "../../assets/images/Vector.png";
 
 export default function HomeConverter() {
