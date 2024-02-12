@@ -1,5 +1,5 @@
 import useHome from "../../hooks/useHome";
-import HomeConverter from "./HomeConverter";
+import HomeConverter from "../../components/homeConverter/HomeConverter";
 
 export default function Home() {
 

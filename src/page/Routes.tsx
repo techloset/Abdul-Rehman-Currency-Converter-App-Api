@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
-import Home from "../page/home/Home"
-import CurrencyConvertList from '../page/currencyConvertList/CurrencyConvertList'
-import Converter from '../page/converter/Converter'
+import Home from "./home/Home"
+import CurrencyConvertList from './currencyConvertList/CurrencyConvertList'
+import Converter from './converter/Converter'
 
 export default function Navigation() {
     return (
