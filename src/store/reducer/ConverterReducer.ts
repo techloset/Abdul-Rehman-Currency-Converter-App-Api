@@ -65,7 +65,7 @@ export const handleSelectedCurrency = createAsyncThunk(
   }
 );
 
-export const ConverterReducer = createSlice({
+export const converterReducer = createSlice({
   name: "currencyExchange",
   initialState,
   reducers: {
@@ -108,6 +108,6 @@ export const ConverterReducer = createSlice({
 });
 
 export const { updateSourceCurrency, updateTargetCurrency } =
-  ConverterReducer.actions;
+converterReducer.actions;
 
-export default ConverterReducer.reducer;
+export default converterReducer.reducer;
