@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import ConverterReducer from './reducer/converterReducer';
+import converterReducer from './reducer/converterReducer';
 
 const store = configureStore({
-  reducer: ConverterReducer
+  reducer: converterReducer
 })
 
 export default store
