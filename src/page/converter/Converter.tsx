@@ -25,7 +25,7 @@ export default function Converter() {
     handleConversion,
     exchangeRates,
     loading,
-    symbols
+    symbols,
   } = useConverter();
 
   console.log("oneCurrency", oneCurrency);
@@ -83,41 +83,41 @@ export default function Converter() {
                     <span>{sourceCurrency || ""}</span>
                   </div>
                   <div className="content  absolute right-0 top-full hidden p-6 mt-[60px] md:mt-0  bg-white w-[300px]  max-h-[340px] overflow-y-auto pr-[7px] rounded-md  drop-shadow-md h-[340px]">
-                      <div className="search relative bg-white">
-                        <input
-                          spellCheck={false}
-                          type="text"
-                          placeholder="Search"
-                          className="bg-white border-b-2 h-[40px] w-full focus:outline-none text-[15px] px-[20px] "
-                          value={searchWord}
-                          onChange={(e) => setSearchWord(e.target.value)}
-                        />
-                      </div>
-                      <ul className="options overflow-y-auto scrollbar-w-2 scrollbar-track-gray-100 scrollbar-thumb-gray-400 scrollbar-thumb-hover:gray-300 bg-white w-full pr-[7px] mt-2">
-                        {filteredCountryList.map(
-                          ([currencyCode, country], index) => {
-                            return (
-                              <li
-                                key={index}
-                                onClick={() => updateName(currencyCode)}
-                                className={`h-[40px] hover:rounded-[5px] flex items-center cursor-pointer  ${
-                                  currencyCode === sourceCurrency
-                                    ? "h-[40px] hover:rounded-[5px]"
-                                    : ""
-                                }`}
-                              >
-                                <span className="font-bold mr-3">
-                                  {currencyCode}
-                                </span>
-                                <span className="text-[13px] w-40">
-                                  {country}
-                                </span>
-                              </li>
-                            );
-                          }
-                        )}
-                      </ul>
+                    <div className="search relative bg-white">
+                      <input
+                        spellCheck={false}
+                        type="text"
+                        placeholder="Search"
+                        className="bg-white border-b-2 h-[40px] w-full focus:outline-none text-[15px] px-[20px] "
+                        value={searchWord}
+                        onChange={(e) => setSearchWord(e.target.value)}
+                      />
                     </div>
+                    <ul className="options overflow-y-auto scrollbar-w-2 scrollbar-track-gray-100 scrollbar-thumb-gray-400 scrollbar-thumb-hover:gray-300 bg-white w-full pr-[7px] mt-2">
+                      {filteredCountryList.map(
+                        ([currencyCode, country], index) => {
+                          return (
+                            <li
+                              key={index}
+                              onClick={() => updateName(currencyCode)}
+                              className={`h-[40px] hover:rounded-[5px] flex items-center cursor-pointer  ${
+                                currencyCode === sourceCurrency
+                                  ? "h-[40px] hover:rounded-[5px]"
+                                  : ""
+                              }`}
+                            >
+                              <span className="font-bold mr-3">
+                                {currencyCode}
+                              </span>
+                              <span className="text-[13px] w-40">
+                                {country}
+                              </span>
+                            </li>
+                          );
+                        }
+                      )}
+                    </ul>
+                  </div>
                 </div>
               </div>
 
@@ -153,41 +153,41 @@ export default function Converter() {
                     <span>{targetCurrency || ""}</span>
                   </div>
                   <div className="content absolute right-0 top-full hidden p-6  bg-white w-[300px] mt-[10px] max-h-[340px]  overflow-y-auto pr-[7px] rounded-md  drop-shadow-md h-[340px]">
-                      <div className="search relative bg-white">
-                        <input
-                          spellCheck={false}
-                          type="text"
-                          placeholder="Search"
-                          className="bg-white border-b-2 h-[40px] w-full focus:outline-none text-[15px] px-[20px] "
-                          value={searchWord}
-                          onChange={(e) => setSearchWord(e.target.value)}
-                        />
-                      </div>
-                      <ul className="options  scrollbar-w-2 scrollbar-track-gray-100 scrollbar-thumb-gray-400 scrollbar-thumb-hover:gray-300 bg-white w-full overflow-y-auto pr-[7px] mt-2">
-                        {filteredCountryList.map(
-                          ([currencyCode, country], index) => {
-                            return (
-                              <li
-                                key={index}
-                                onClick={() => updateName2(currencyCode)}
-                                className={`h-[40px] hover:rounded-[5px] flex items-center cursor-pointer  ${
-                                  currencyCode === targetCurrency
-                                    ? "h-[40px] hover:rounded-[5px]"
-                                    : ""
-                                }`}
-                              >
-                                <span className="font-bold mr-3">
-                                  {currencyCode}
-                                </span>
-                                <span className="text-[13px] w-40">
-                                  {country}
-                                </span>
-                              </li>
-                            );
-                          }
-                        )}
-                      </ul>
+                    <div className="search relative bg-white">
+                      <input
+                        spellCheck={false}
+                        type="text"
+                        placeholder="Search"
+                        className="bg-white border-b-2 h-[40px] w-full focus:outline-none text-[15px] px-[20px] "
+                        value={searchWord}
+                        onChange={(e) => setSearchWord(e.target.value)}
+                      />
                     </div>
+                    <ul className="options  scrollbar-w-2 scrollbar-track-gray-100 scrollbar-thumb-gray-400 scrollbar-thumb-hover:gray-300 bg-white w-full overflow-y-auto pr-[7px] mt-2">
+                      {filteredCountryList.map(
+                        ([currencyCode, country], index) => {
+                          return (
+                            <li
+                              key={index}
+                              onClick={() => updateName2(currencyCode)}
+                              className={`h-[40px] hover:rounded-[5px] flex items-center cursor-pointer  ${
+                                currencyCode === targetCurrency
+                                  ? "h-[40px] hover:rounded-[5px]"
+                                  : ""
+                              }`}
+                            >
+                              <span className="font-bold mr-3">
+                                {currencyCode}
+                              </span>
+                              <span className="text-[13px] w-40">
+                                {country}
+                              </span>
+                            </li>
+                          );
+                        }
+                      )}
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>

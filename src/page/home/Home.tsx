@@ -2,13 +2,7 @@ import useHome from "../../hooks/useHome";
 import HomeConverter from "../../components/HomeConverter/HomeConverter";
 
 export default function Home() {
-
-  const {
-    handleDropDown,
-    setSelectedCurrency,
-  } = useHome();
-
-
+  const { handleDropDown, setSelectedCurrency } = useHome();
 
   return (
     <>
@@ -25,7 +19,6 @@ export default function Home() {
             </p>
           </div>
           <HomeConverter />
-          
         </div>
       </div>
       <div className="mt-96">

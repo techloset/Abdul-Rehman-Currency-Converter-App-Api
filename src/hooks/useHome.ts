@@ -28,7 +28,7 @@ export default function useHero() {
 
   useEffect(() => {
     setLoading(stateLoading);
-  }, [exchangeRates, symbols,stateLoading]);
+  }, [exchangeRates, symbols, stateLoading]);
 
   useEffect(() => {
     dispatch(fetchCurrencyExchangeSymbols());
@@ -97,7 +97,7 @@ export default function useHero() {
     sourceCurrency,
     targetCurrency,
     setConvertedAmount,
-    handleConversion,    
+    handleConversion,
     symbols,
   };
 }

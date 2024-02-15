@@ -72,8 +72,6 @@ export default function useConverter() {
     setIsActive2(false);
   };
 
-  
-
   return {
     loading,
     updateName2,
@@ -96,6 +94,6 @@ export default function useConverter() {
     targetCurrency,
     setConvertedAmount,
     handleConversion,
-    symbols
+    symbols,
   };
 }

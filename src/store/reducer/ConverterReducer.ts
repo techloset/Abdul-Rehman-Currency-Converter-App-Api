@@ -1,16 +1,6 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import instance from "../../instance/Instance";
-
-interface CurrencyState {
-  base: string;
-  date: string;
-  symbols: { [key: string]: string };
-  rates: { [key: string]: string };
-  selectedCurrency: string;
-  sourceCurrency: string;
-  targetCurrency: string;
-  loading: boolean;
-}
+import { CurrencyState } from "../../types/Types";
 
 const initialState: CurrencyState = {
   date: "",
@@ -108,6 +98,6 @@ export const converterReducer = createSlice({
 });
 
 export const { updateSourceCurrency, updateTargetCurrency } =
-converterReducer.actions;
+  converterReducer.actions;
 
 export default converterReducer.reducer;

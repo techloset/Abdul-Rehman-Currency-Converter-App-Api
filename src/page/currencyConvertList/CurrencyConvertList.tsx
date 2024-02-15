@@ -7,15 +7,14 @@ import {
   updateSourceCurrency,
   updateTargetCurrency,
 } from "../../store/reducer/converterReducer";
-import {  useState } from "react";
+import { useState } from "react";
 
 export default function CurrencyConvertList() {
-  const [popularCurrency,countryName] = useCurrencyConvertList();
+  const [popularCurrency, countryName] = useCurrencyConvertList();
   const [selectedCurrency, setSelectedCurrency] = useState("");
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  
   const list = [
     "USD",
     "EUR",
@@ -39,8 +38,8 @@ export default function CurrencyConvertList() {
             <p className="py-3">
               The United States Dollar is the official currency of the United
               States and several other countries. Its currency code is USD and
-              it’s symbol using the $ sign. $1 is made up of 100 cents. With
-              a World Account, you can pay and collect USD using local bank
+              it’s symbol using the $ sign. $1 is made up of 100 cents. With a
+              World Account, you can pay and collect USD using local bank
               details – and you don’t need an overseas address.
             </p>
             <button className="border-2 rounded-md border-red-500 px-16 py-3 bg-red-500 text-white font-bold hover:bg-white hover:text-red-500">

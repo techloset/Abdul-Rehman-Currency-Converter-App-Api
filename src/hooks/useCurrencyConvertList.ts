@@ -26,5 +26,5 @@ export default function useCurrencyConvertList() {
     }
   }, [dispatch, location.search]);
 
-  return [popularCurrency,countryName];
+  return [popularCurrency, countryName];
 }
