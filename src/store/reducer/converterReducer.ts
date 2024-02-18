@@ -78,7 +78,7 @@ export const converterReducer = createSlice({
         state.loading = false;
       })
       .addCase(fetchCurrencyExchange.rejected, (state, action) => {
-        // alert("API call failed Currency Exchange");
+        alert("API call failed Currency Exchange");
         state.loading = false;
       })
       .addCase(fetchCurrencyExchangeSymbols.pending, (state) => {
@@ -88,7 +88,7 @@ export const converterReducer = createSlice({
         state.symbols = action.payload;
       })
       .addCase(fetchCurrencyExchangeSymbols.rejected, (state, action) => {
-        // alert("API call failed Currency Exchange Symbols");
+        alert("API call failed Currency Exchange Symbols");
         state.loading = false;
       })
       .addCase(handleSelectedCurrency.fulfilled, (state, action) => {
