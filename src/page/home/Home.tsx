@@ -8,12 +8,11 @@ export default function Home() {
     <>
       <div className="mb-28">
         <div className="text-center mb-20 bg-blue-50 h-96">
-          <div className="my-20">
-            <h1 className="text-6xl  font-bold  font-Roboto leading-[100px] text-zinc-900">
-              {" "}
+          <div className="my-[96px]">
+            <h1 className="text-[32px] sm:text-[60px]  font-bold  font-roboto leading-[100px] text-[#1A1A1A]">
               Currency Converter
             </h1>
-            <p className="text-base font-normal font-Roboto leading-[42px]">
+            <p className="text-[16px] font-normal font-roboto leading-[24px] sm:leading-[42px]">
               Need to make an international business payment? Take a look at our
               live foreign exchange rates.
             </p>
@@ -21,7 +20,7 @@ export default function Home() {
           <HomeConverter />
         </div>
       </div>
-      <div className="mt-96">
+      <div className=" mt-[400px]">
         <div className="w-10/12 m-8 md:w-6/12 sm:mx-32 sm:w-4/12">
           <h1 className="text-3xl font-bold py-5">Let Save You Some Time</h1>
           <p className="py-3">
@@ -30,7 +29,7 @@ export default function Home() {
             you. When your chosen rate is reached, we’ll act immediately,
             leaving you free to concentrate on your business.
           </p>
-          <button className="border-2 rounded-md border-red-500 px-8 py-2 bg-red-500 text-white font-bold hover:bg-white hover:text-red-500">
+          <button className="border-2 rounded-md border-[#E5133A] px-8 py-2 bg-[#E5133A] text-white font-bold hover:bg-white hover:text-red-500">
             Find More
           </button>
 
@@ -38,13 +37,15 @@ export default function Home() {
         </div>
       </div>
 
-      <div className=" flex flex-col text-center   bg-sky-200 h-[343px] mt-32 p-12">
+      <div className="flex flex-col text-center bg-currency-background bg-cover bg-[#F0F5FF] h-[343px] mt-32 p-12">
         <div className="text-center">
-          <h1 className="text-2xl font-bold py-2">Popular Currency</h1>
+          <h1 className="text-[32px] leading-[42px]  font-bold py-2">
+            Popular currencies
+          </h1>
         </div>
-        <div className="flex flex-col text-center items-center justify-center    sm:flex-row  mt-3">
+        <div className="flex flex-col items-center justify-center sm:flex-row mt-3">
           <select
-            className="w-10/12 sm:w-4/12  h-10 rounded-md mt-3 p-1 border-2 text-gray-400 focus:outline-none "
+            className="w-full sm:w-4/12 h-[44px] sm:h-[auto] rounded-md mt-3 placeholder:text-black p-1 border-2 text-gray-400 focus:outline-none"
             onChange={(e) => {
               setSelectedCurrency(e.target.value);
             }}
@@ -60,7 +61,7 @@ export default function Home() {
           </select>
           <button
             onClick={handleDropDown}
-            className="border-2 mt-3 w-4/12 sm:w-2/12 rounded-md border-red-500 mx-4 px-8 py-1 bg-red-500 text-white font-bold hover:bg-white hover:text-red-500"
+            className="border-2 mt-3 w-full sm:w-2/12 h-[46px] rounded-md border-primary mx-0 sm:mx-4 px-8 py-1 bg-primary text-white font-bold hover:bg-white hover:text-primary"
           >
             Go
           </button>
