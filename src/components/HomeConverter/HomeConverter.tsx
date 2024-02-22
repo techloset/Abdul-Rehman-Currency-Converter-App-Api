@@ -77,7 +77,7 @@ export default function HomeConverter() {
                 </span>
                 <img src={downArrow} className="pl-3" alt="caret-down" />
               </div>
-              <div className="content  absolute right-0 top-full hidden p-6 z-10 md:mt-0  bg-white sm:w-[370px] w-[320px]  max-h-[340px] overflow-y-auto pr-[7px] rounded-md  drop-shadow-md h-[340px]">
+              <div className="content  absolute right-0 top-full hidden p-6 z-10 md:mt-0  bg-white sm:w-[370px] w-[320px]   max-h-[340px] overflow-y-auto pr-[7px] rounded-md   h-[340px]">
                 <div className="search relative bg-white">
                   <input
                     spellCheck={false}
@@ -94,14 +94,14 @@ export default function HomeConverter() {
                       <li
                         key={index}
                         onClick={() => updateName(currencyCode)}
-                        className={`h-[40px] hover:rounded-[5px] flex items-center cursor-pointer  ${
+                        className={`h-[44px] w-[333px] mx-10 hover:rounded-[5px] flex items-center cursor-pointer  ${
                           currencyCode === sourceCurrency
                             ? "h-[40px] hover:rounded-[5px]"
                             : ""
                         }`}
                       >
-                        <span className="font-bold mr-3">{currencyCode}</span>
-                        <span className="text-[13px] w-40">{country}</span>
+                        <span className="font-bold text-[16px] text-black mr-3">{currencyCode}</span>
+                        <span className="text-[13px] text-start w-40 text-black">{country}</span>
                       </li>
                     );
                   })}
@@ -149,7 +149,7 @@ export default function HomeConverter() {
                 </span>
                 <img src={downArrow} className="pl-3" alt="caret-down" />
               </div>
-              <div className="content absolute right-0 top-full hidden p-6  bg-white w-[320px] sm:w-[370px]  max-h-[340px] z-10  overflow-y-auto pr-[7px] rounded-md  drop-shadow-md h-[340px]">
+              <div className="content absolute right-0 top-full hidden p-6  bg-white w-[320px] sm:w-[370px]  max-h-[340px] z-10  overflow-y-auto pr-[7px] rounded-md   h-[340px]">
                 <div className="search relative bg-white">
                   <input
                     spellCheck={false}
@@ -166,14 +166,14 @@ export default function HomeConverter() {
                       <li
                         key={index}
                         onClick={() => updateName2(currencyCode)}
-                        className={`h-[40px] hover:rounded-[5px] flex items-center cursor-pointer  ${
+                        className={`h-[44px] w-[333px] mx-10 hover:rounded-[5px] flex items-center cursor-pointer  ${
                           currencyCode === targetCurrency
                             ? "h-[40px] hover:rounded-[5px]"
                             : ""
                         }`}
                       >
-                        <span className="font-bold mr-3">{currencyCode}</span>
-                        <span className="text-[13px] w-40">{country}</span>
+                        <span className="text-[16px] text-black font-bold mr-3">{currencyCode}</span>
+                        <span className="text-[13px] text-start w-40">{country}</span>
                       </li>
                     );
                   })}

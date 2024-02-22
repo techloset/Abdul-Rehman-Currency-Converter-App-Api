@@ -94,6 +94,7 @@ export default function useHero() {
     handleDropDown,
     convertedAmount,
     setSelectedCurrency,
+    selectedCurrency,
     sourceCurrency,
     targetCurrency,
     setConvertedAmount,

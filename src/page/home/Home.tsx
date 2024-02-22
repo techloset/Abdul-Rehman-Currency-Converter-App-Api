@@ -20,8 +20,8 @@ export default function Home() {
           <HomeConverter />
         </div>
       </div>
-      <div className=" mt-[400px]">
-        <div className="w-10/12 m-8 md:w-6/12 sm:mx-32 sm:w-4/12">
+      <div className=" mt-[400px] md:ml-[228px]">
+        <div className="max-w-[544px] m-8 ">
           <h1 className="text-3xl font-bold py-5">Let Save You Some Time</h1>
           <p className="py-3">
             If you’ve got a target exchange rate in mind but haven’t got time to
@@ -32,11 +32,9 @@ export default function Home() {
           <button className="border-2 rounded-md border-[#E5133A] px-8 py-2 bg-[#E5133A] text-white font-bold hover:bg-white hover:text-red-500">
             Find More
           </button>
-
           <button></button>
         </div>
       </div>
-
       <div className="flex flex-col text-center bg-currency-background bg-cover bg-[#F0F5FF] h-[343px] mt-32 p-12">
         <div className="text-center">
           <h1 className="text-[32px] leading-[42px]  font-bold py-2">
@@ -51,7 +49,7 @@ export default function Home() {
             }}
           >
             <option value="">select Currency</option>
-            <option value="USD">USD United States</option>
+            <li value="USD">USD United States</li>
             <option value="EUR">EUR Europe</option>
             <option value="JPY">JPY JAPAN</option>
             <option value="KWD">KWD Kuwait</option>
